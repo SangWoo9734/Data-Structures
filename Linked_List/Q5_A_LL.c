@@ -110,8 +110,6 @@ void frontBackSplitLinkedList(LinkedList *ll, LinkedList *resultFrontList, Linke
 		list_size = ll -> size / 2 + 1;
 	}
 
-	printf("%d\n", list_size);
-
 	ListNode* node = ll -> head;
 
 	for (int i = 0; i < ll -> size; i++) {
