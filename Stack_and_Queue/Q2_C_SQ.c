@@ -113,12 +113,32 @@ int main()
 
 void createStackFromLinkedList(LinkedList *ll, Stack *s)
 {
-    /* add your code here */
+		ListNode *node = ll -> head;
+
+		while (node) {
+			push(s, node -> item);
+			node = node -> next;
+		}
 }
 
 void removeEvenValues(Stack *s)
 {
-	/* add your code here */
+	LinkedList temp = { 0, NULL };
+	Stack save_stack = { temp };
+
+	Stack *ss = &save_stack;
+
+	while (isEmptyStack(s) == 0) {
+		int value = pop(s);
+
+		if (value % 2) {
+			push(ss, value);
+		}
+	}
+
+	while (isEmptyStack(ss) == 0) {
+		push(s, pop(ss));
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////////////
