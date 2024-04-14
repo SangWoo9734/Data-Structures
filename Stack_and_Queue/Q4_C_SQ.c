@@ -112,7 +112,22 @@ int main()
 
 void reverse(Queue *q)
 {
-/* add your code here */
+	LinkedList temp = { 0, NULL };
+	Stack save_stack = { temp };
+
+	Stack *s = &save_stack;
+
+	while (isEmptyQueue(q) == 0) {
+		int value = dequeue(q);
+
+		push(s, value);
+	}
+
+	while (isEmptyStack(s) == 0) {
+		int value = pop(s);
+
+		enqueue(q, value);
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
