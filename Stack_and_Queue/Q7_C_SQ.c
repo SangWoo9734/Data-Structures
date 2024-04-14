@@ -104,7 +104,51 @@ int main()
 ////////////////////////////////////////////////////////////
 int balanced(char *expression)
 {
-/* add your code here */
+	printf("%s\n", expression);
+	// initialized stack
+	LinkedList ll = { 0, NULL };
+	Stack s = { ll };
+
+	Stack* ss = &(s);
+
+	int index = 0;
+
+	while (*(expression + index) != NULL) {
+		char letter = *(expression + index);
+		char stack_head;
+
+		if (s.ll.head == NULL) {
+			stack_head = "";
+		} else {
+			stack_head = s.ll.head -> item;
+		}
+
+		if (s.ll.size == 0 ) {
+			push(ss, letter);
+		} 
+
+		else {
+
+			if ( letter == ')' && stack_head == '(') {
+				pop(ss);
+			} else if ( letter == '}' && stack_head == '{') {
+				pop(ss);
+			} else if ( letter == ']' && stack_head == '[') {
+				pop(ss);
+			} else {
+				push(ss, letter);
+			}
+
+		}
+
+		index ++;
+	}	
+
+	if (s.ll.size != 0) {
+		return 1;
+	} else {
+		return 0;
+	}
 }
 
 ////////////////////////////////////////////////////////////
