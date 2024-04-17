@@ -41,7 +41,7 @@ BSTNode *peek(Stack *s);
 int isEmpty(Stack *s);
 void removeAll(BSTNode **node);
 
-///////////////////////////// main() /////////////////////////////////////////////
+///////////////////////////// main) /////////////////////////////////////////////
 
 int main()
 {
@@ -91,7 +91,19 @@ int main()
 
 void preOrderIterative(BSTNode *root)
 {
-	 /* add your code here */
+	Stack stack = { NULL };
+	Stack *stack_pointer = &(stack);
+
+	push(stack_pointer, root);
+
+	while(isEmpty(stack_pointer) == 0 ) {
+		BSTNode* node = pop(stack_pointer);
+
+		printf("%d ", node -> item);
+
+		if (node -> right != NULL) {push(stack_pointer, node -> right);}
+		if (node -> left != NULL) {push(stack_pointer, node -> left);}
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////
