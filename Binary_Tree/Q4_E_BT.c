@@ -103,7 +103,27 @@ int main()
 int sumOfOddNodes(BTNode *node)
 
 {
-    /* add your code here */
+    Stack s;
+    s.top = NULL;
+
+    Stack *ss = &s;
+    
+    push(ss, node);
+
+    int odd_sum = 0;
+
+    while (ss -> top != NULL) {
+        BTNode * n = pop(ss);
+
+        if (n->item % 2) {
+            odd_sum += n -> item;
+        }
+        
+        if (n->left != NULL) { push(ss, n->left); }
+        if (n->right != NULL) { push(ss, n->right); }
+    }
+
+    return odd_sum;
 }
 
 //////////////////////////////////////////////////////////////////////////////////
