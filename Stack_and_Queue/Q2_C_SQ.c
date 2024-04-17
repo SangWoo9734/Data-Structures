@@ -112,7 +112,11 @@ int main()
 //////////////////////////////////////////////////////////////////////////////////
 
 void createStackFromLinkedList(LinkedList *ll, Stack *s)
-{
+{	
+		if (s->ll.size > 0) {
+			removeAllItems(&(s->ll));
+		}
+		
 		ListNode *node = ll -> head;
 
 		while (node) {
